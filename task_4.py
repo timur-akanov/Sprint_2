@@ -22,9 +22,12 @@ class EmployeeSalary:
     @classmethod
     def set_hourly_payment(cls, value):
         cls.hourly_payment = value
-
+        return cls
+        
     def salary(self):
         hrs = self.get_hours()
+        if hrs is None:
+            raise ValueError("Неизвестно количество часов (hours и rest_days не заданы).")
         return hrs * self.hourly_payment
 
 
