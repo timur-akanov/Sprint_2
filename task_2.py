@@ -1,23 +1,24 @@
 class Movies:
-    def __init__(self):
-        self.movies =[]
+    movies = []  # атрибут класса — общий для всех экземпляров
 
-    def add_movie(self, movie):
-        self.movies.append(movie)
+    @classmethod
+    def add_movie(cls, movie):
+        cls.movies.append(movie)
+
 
 class Comedy(Movies):
-    def add_movie(self, movie):
+    @classmethod
+    def add_movie(cls, movie):
         super().add_movie(movie)
-        return f"Комедии: {self.movies}"
+        return f"Комедии: {cls.movies}"
+
 
 class Drama(Movies):
-    def add_movie(self, movie):
+    @classmethod
+    def add_movie(cls, movie):
         super().add_movie(movie)
-        return f"Драмы: {self.movies}"
-    
+        return f"Драмы: {cls.movies}"
 
-c = Comedy()
-print(c.add_movie('Большой куш'))
 
-d = Drama()
-print(d.add_movie('Оружейный барон'))
+print(Comedy.add_movie('Большой куш'))
+print(Drama.add_movie('Оружейный барон'))
