@@ -1,24 +1,35 @@
 class Movies:
-    movies = []  # атрибут класса — общий для всех экземпляров
+    def __init__(self):
+        # Инициализируем пустой список для хранения фильмов
+        self.movies = []
 
-    @classmethod
-    def add_movie(cls, movie):
-        cls.movies.append(movie)
+    def add_movie(self, movie):
+        # Добавляем фильм в конец списка
+        self.movies.append(movie)
 
 
 class Comedy(Movies):
-    @classmethod
-    def add_movie(cls, movie):
+    def add_movie(self, movie):
+        # Вызываем метод родителя для добавления фильма в список
         super().add_movie(movie)
-        return f"Комедии: {cls.movies}"
+        # Возвращаем отформатированную строку для комедий
+        return f"Комедии: {self.movies}"
 
 
 class Drama(Movies):
-    @classmethod
-    def add_movie(cls, movie):
+    def add_movie(self, movie):
+        # Вызываем метод родителя для добавления фильма в список
         super().add_movie(movie)
-        return f"Драмы: {cls.movies}"
+        # Возвращаем отформатированную строку для драм
+        return f"Драмы: {self.movies}"
 
 
-print(Comedy.add_movie('Большой куш'))
-print(Drama.add_movie('Оружейный барон'))
+# Создание объекта комедии и добавление фильма
+comedy_instance = Comedy()
+result_comedy = comedy_instance.add_movie('Большой куш')
+print(result_comedy)
+
+# Создание объекта драмы и добавление фильма
+drama_instance = Drama()
+result_drama = drama_instance.add_movie('Оружейный барон')
+print(result_drama)
